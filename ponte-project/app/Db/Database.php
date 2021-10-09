@@ -8,8 +8,8 @@ use \PDOException;
 class Database{
     const HOST = 'localhost';
     const NAME = 'projeto_ponte';
-    const USER = 'egc';
-    const PASS = '20200106';
+    const USER = 'root';
+    const PASS = '';
 
     private $table;
     private $connection;
