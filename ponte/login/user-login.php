@@ -27,7 +27,7 @@
             echo 'oi';
             require "index.php";
         } else {
-            $q = "SELECT nomeFantasia, razaoSocial, senha, tipoOng, cnpj FROM usuario WHERE email = '$u' LIMIT 1";
+            $q = "SELECT idUsuario, nomeFantasia, razaoSocial, senha, tipoOng, cnpj FROM usuario WHERE email = '$u' LIMIT 1";
             $busca = $banco->query($q);
             if (!$busca) {
                 echo "<div class='alert alert-danger' role='alert'>
@@ -38,7 +38,7 @@
                     $reg = $busca->fetch_object();
                     if (testarHash($s, $reg->senha)) {
                         session_start();
-                        $_SESSION['user'] = $reg->cnpj;
+                        $_SESSION['user'] = $reg->idUsuario;
                         $_SESSION['nome'] = $reg->nomeFantasia;
                         $_SESSION['tipo'] = $reg->tipoOng;
 
@@ -59,7 +59,7 @@
             }
         }
         sleep(2);
-        header('Location: '.'http://localhost/ponte/contato/index.php');
+        header('Location: '.'http://localhost/CRUDS-PONTE-MAIN/ponte/contato/index.php');
         ?>
     </div>
 </body>

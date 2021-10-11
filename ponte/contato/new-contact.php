@@ -24,6 +24,7 @@
                 $numero = $_POST['numero'] ?? null;
                 $descricao = $_POST['descricao'] ?? null;
                 $user = $_SESSION['user'];
+                echo $numero.' '.$descricao.' '.$user;
                 $contato = new Contato($numero, $descricao, 0, $user);
                 $ok = $contato->retornarDadosEnvio();
                 if ($ok) {
