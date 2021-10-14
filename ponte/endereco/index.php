@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
 <head>
-    <title>Título da página</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="estilo/estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <link rel='stylesheet' href='../endereco/estilo/estilo.css'> -->
+    <meta charset='UTF-8'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'></script>
 </head>
-
+<style>
+    div#corpo{
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 30px #777;
+}
+</style>
 <body>
-    <?php
+<?php
+    require_once "../includes/function.php";
+    if(is_logado()==true){
+            require_once "../includes/menuComponent.php";
+        }
     require_once "../includes/banco.php";
     require_once "./class/endereco.php";
     require_once "../includes/function.php";
@@ -18,11 +26,8 @@
     <div id="corpo">
         <?php
         if (is_logado() == true) {
-            require_once "../logout/logout-ht.php";
+            // require_once "../logout/logout-ht.php";
             echo '<h1>Endereço</h1>';
-            if (!isset($_SESSION)) {
-                session_start();
-            }
             $user = $_SESSION['user'];
             $get = new Endereco(null, null, null, null, null, $user);
             $q = $get->retornarDadosPegar();
@@ -71,5 +76,3 @@
         <br>
     </div>
 </body>
-
-</html>

@@ -13,6 +13,10 @@ session_start();
 ?>
 <body>
     <?php
+    require_once "../includes/function.php";
+    if(is_logado()==true){
+            require_once "../../ponte/includes/menuComponent.php";
+        }
     require_once "../includes/banco.php";
     require_once "./class/contact-class.php";
     require_once "../includes/function.php";
@@ -21,7 +25,7 @@ session_start();
 
         <?php
         if (is_logado() == true) {
-            require_once "../logout/logout-ht.php";
+            // require_once "../logout/logout-ht.php";
             echo "<h1>Contato</h1>";
             $user = $_SESSION['user'];
             $get = new Contato(null,null,null,$user);

@@ -1,5 +1,5 @@
 <?php 
-    $banco = new mysqli("localhost", "egc", "20200106", "projeto_ponte");
+    $banco = new mysqli("127.0.0.1:3309", "root", "root", "db_ponte");
 	if($banco->connect_errno){
         echo "<p>Encontrei um erro $banco->errno-->$banco->connect_error</p>";
 		die();

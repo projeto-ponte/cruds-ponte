@@ -11,43 +11,40 @@
 
 <body>
     <?php
-    require_once "../includes/banco.php";
-    require_once "./class/contact-class.php";
-    require_once "../includes/function.php"
+    require_once "../includes/banco.php"; 
+    require_once "../includes/function.php";
     ?>
     <div id="corpo">
         <?php
         if (is_logado() == true) {
-            if (!isset($_POST['numero'])) {
-                require "./new-contact-form.php";
-            } else {
-                $numero = $_POST['numero'] ?? null;
-                $descricao = $_POST['descricao'] ?? null;
-                $user = $_SESSION['user'];
-                $contato = new Contato($numero, $descricao, 0, $user);
-                $ok = $contato->retornarDadosEnvio();
-                if ($ok) {
-                    $q = $ok;
-                    if ($banco->query($q)) {
-                        echo '<div class="alert alert-success" role="alert">
-                    Número cadastrado
+            $idUser = $_SESSION['user'];
+            $q = "DELETE FROM usuario WHERE idUsuario=$idUser";
+            if ($q) {
+                if ($banco->query($q)) {
+                    echo '<script>alert(<div class="alert alert-success" role="alert">
+                    Usuário deletado deletado
                   </div>';
-                    } else {
-                        echo '<div class="alert alert-danger" role="alert">
-                    Não foi possível cadastrar
-                  </div>';
-                    }
+                    unset($_SESSION['user']); 
+                    unset($_SESSION['nome']);
+                    unset($_SESSION['tipo']);
+                    sleep(5);
+                    header('Location: ' . 'http://localhost/ponte/login/index.php');
                 } else {
                     echo '<div class="alert alert-danger" role="alert">
-                    Não foi possível cadastrar
+                    Não foi possível deletar
                   </div>';
                 }
+            } else {
+                echo '<div class="alert alert-danger" role="alert">
+                    Não foi possível deletar
+                  </div>';
             }
         } else {
             echo '<div class="alert alert-danger" role="alert">
                     Usuário não logado
                   </div>';
         }
+
 
         ?>
         <br>

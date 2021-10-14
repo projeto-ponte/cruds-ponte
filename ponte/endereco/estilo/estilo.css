@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: #ddd;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -8,8 +8,8 @@ div#corpo{
     padding: 20px;
     background-color: white;
     box-shadow: 0px 0px 30px #777;
-}
-table.listagem{
+} */
+/* table.listagem{
     width: 100%;
     text-align: left;
     border-collapse: collapse;
@@ -26,4 +26,4 @@ table.listagem td:nth-child(1){
 }
 table.listagem td:nth-child(3){
     width: 90px;
-}
+} */
