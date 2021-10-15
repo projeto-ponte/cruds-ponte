@@ -1,8 +1,0 @@
-{
-    "name":"projeto-ponte/ongs",
-    "autoload": {
-        "psr-4": {
-            "App\\":"app/"
-        }
-    }
-}
